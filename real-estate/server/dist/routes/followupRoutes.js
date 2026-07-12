@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const followupController_1 = require("../controllers/followupController");
+const auth_1 = require("../middleware/auth");
+const router = (0, express_1.Router)();
+router.use(auth_1.authenticateToken);
+router.get('/', followupController_1.getFollowups);
+router.post('/', followupController_1.createFollowup);
+router.put('/:id/toggle', followupController_1.toggleFollowup);
+exports.default = router;
